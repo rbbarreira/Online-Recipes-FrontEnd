@@ -1,0 +1,306 @@
+/*-- Basic --*/
+a {
+    text-decoration: none;
+    color: #f78e21;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: #f78e21;
+  }
+  
+  .blue {
+      color: #09F;
+  }
+  
+  .green {
+      color: #0A0;
+  }
+  
+  p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .heading-section {
+    text-align: center;
+    padding: 100px 0 80px 0;
+  }
+  
+  .heading-section h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    color: #333;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  
+  *, *:before, *:after {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+  }
+  
+  .space30 {
+      margin-bottom: 30px;
+  }
+  
+  .space50 {
+      margin-bottom: 50px;
+  }
+    
+  /*-- Heading --*/
+  
+  .img-heading { 
+    overflow: hidden; 
+  }
+  
+  .img-heading .frame img {
+    width: 100%; 
+  }
+  
+  .img-heading { 
+    zoom: 1; max-height:  600px; 
+  }
+  
+  #frame {
+    overflow: hidden;
+  }
+  
+  .frame-caption {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    margin-top: 160px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .frame-caption h1 {
+    text-shadow: 1px 1px #777;
+    font-size: 48px;
+    padding-bottom: 10px;
+    font-weight: 500;
+    color: #f78e21;
+    text-transform: uppercase;
+  }
+  
+  #heading {
+    background-image: url(/src/assets/bg-image.jpg);
+    height: 140px;
+  }
+  
+  #heading h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  
+  #heading span {
+    color: #fff;
+    text-transform: uppercase;
+  }
+  
+  .heading-content {
+    text-align: center;
+    margin-top: 35px;
+  }
+  
+  .introduction {
+    text-align: center;
+    font-family: Garamond, serif;
+  }
+  .introduction p {
+    letter-spacing: 3px;
+    line-height: 1.8;
+    word-spacing: 10px;  
+    margin: 0 0 60px;
+    font-family: "flexslider-icon";
+    font-size: 20px;
+    display: block;  
+    color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+  }
+  .introduction .quote {
+    font-size: 16px;
+    color: gray;
+    margin-top: -50px;
+  }
+  
+  /*-- Recipes --*/
+  
+  .grid-recipes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    padding: 10px;
+    justify-content: space-around;
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  /*-- Contact Us --*/
+  
+  input, textarea {
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    width: 100%;
+    margin-top: 25px;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 300;
+    color: #aaa;
+    outline: none; 
+  }
+  
+  textarea {
+    height: 165px;
+    max-height: 180px;
+    max-width: 770px;
+    line-height: 18px;
+    width: 100%
+  }
+  
+  .form label {
+    margin-left: 10px;
+    color: #999999;
+  }
+  
+  .send button {
+    width: 90px;
+    color: #fff;
+    cursor: pointer;
+    height: 35px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f78e21; 
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 0;
+    outline: none;
+  }
+  
+  .leave input {
+    width: 90px;
+    cursor: pointer;
+    height: 35px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f78e21; 
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 0;
+  }
+  
+  .message-form input {
+    margin-top: 0px;
+  }
+  
+  .message-form  textarea {
+    padding-bottom: 20px;
+  }
+  
+  .send {
+    margin-top: 20px;
+  }
+  
+  .info p {
+    padding-bottom: 20px;
+  }
+  
+  .info ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .info li {
+    list-style: none;
+    margin: 10px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .info i {
+    color: #f78e21;
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  
+  /*--- RESPONSIVE ---*/
+  
+  @media screen and (max-width: 990px) {
+    .frame-caption {
+      display: none;
+    }
+  
+    .send-message input {
+      margin-top: 20px;
+    }
+  
+    .info {
+      margin-top: 60px;
+      text-align: center;
+    }
+  
+    .grid-recipes {
+      display:flex;
+      flex-wrap:wrap; 
+    }
+  }
+  
+  @media screen and (max-width: 568px) {
+    .content-hide p {
+      display: none;
+    }
+  
+    .frame-caption {
+      display: none;
+    }
+  
+    .send-message input {
+      margin-top: 20px;
+    }
+  
+    .info {
+      margin-top: 60px;
+      text-align: center;
+    }
+  
+    .main-menu li {
+      display: block;
+      margin-top: -60px;
+      margin-right: -35px;
+    }
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .frame-caption {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    body {
+      overflow-x: hidden;
+    }
+  }
+  
+  @media screen and (min-width: 995px) {
+    .hover-iner span {
+      margin-top: 160px;
+    }
+  
+    body {
+      overflow-x: hidden;
+    }
+  }
+  
+  /*--- END RESPONSIVE ---*/
