@@ -1,0 +1,320 @@
+@import "font-awesome/css/font-awesome.css";
+
+/*-- Basic --*/
+*{
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: #f78e21;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #f78e21;
+}
+
+p {  
+	font-size: 13px;
+	color: #666;
+}
+
+.heading-section {
+	text-align: center;
+	padding: 100px 0 80px 0;
+}
+
+.heading-section h2 {  
+	font-size: 20px;
+	color: #333;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+/*-- Heading --*/
+  
+#heading {
+	background-image: url(/assets/bg-image.jpg);
+	height: 140px;
+	background-size: cover;	
+}
+  
+img {
+	height: auto;
+	max-width: 100%; 
+}
+  
+#heading h2 {
+	font-size: 36px;
+	font-weight: 700;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+#heading span {
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.heading-content {
+	text-align: center;
+	margin-top: 35px;
+}
+
+.heading-break-line {
+	text-align: center;
+	padding: 20px 0 40px 0;
+	opacity: 0.2;
+	margin-top: 30px;
+}
+
+/*-- Recipe Headline --*/
+
+.recipe-name {
+	margin-top: 20px;
+	font-size: 38px;
+}
+
+.recipe-img {
+	width: 1000px;
+	height: 500px;
+	max-width: 100%;
+	margin-top: 30px;
+}
+
+.recipe-description {
+	margin-top: 30px;
+	margin-left: 150px;
+	margin-right: 150px;
+}
+
+.recipe-content {
+	margin-top: 60px; 	
+}
+
+.recipe-duration {
+	border-left: 3px solid #f78e21;
+	padding: 15px;
+	letter-spacing: 1px;
+	margin-left: 125px;
+}
+
+.recipe-ratings .ratings {
+	margin-bottom: 30px; 
+}
+
+.recipe-duration img {
+	width: 26px; 
+	height: 26px;
+	align-items: baseline;
+}
+
+.recipe-ratings i {
+	font-size: 20px;
+	color: #fbb710;
+	padding: 0 5px;
+	justify-content: end;
+	align-items: end;
+}
+
+.favorites-btn {
+	max-width: 100%;
+	color: #fff;
+	cursor: pointer;
+	height: auto;
+	line-height: 30px;
+	text-align: center;
+	background-color: #f78e21;  
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;  
+	border: 0;
+}
+
+.favorites-btn:hover {
+	color: #000;
+}
+
+/*-- Preparation --*/
+
+.preparation-step {
+	margin-left: 130px;
+}
+  
+.preparation-step h3 {
+	color: #000000;
+	line-height: 2;
+	font-weight: 600; 
+}
+
+.preparation-step p {	
+	font-size: 15px;
+	line-height: 2;
+	
+}
+
+/*-- Ingredientes --*/
+
+.ingredients h3 {
+	color: #000000;
+	line-height: 2;
+	font-weight: 600;	
+}
+
+.ingredients p {	
+	margin-top: 20px;
+	font-size: 15px;
+	line-height: 2.2;	
+}
+
+  
+/* Comments */
+
+.section-heading {
+	position: relative;
+	z-index: 1;
+	margin-top: 100px;
+	margin-bottom: 80px;
+	text-align: center; 
+}
+
+.section-heading h3 {
+	font-size: 30px;
+	margin-bottom: 0; 
+}
+
+.section-heading.text-left {
+	text-align: left; 
+}
+
+.contact-form-area .form-control {
+	height: 52px;
+	width: 100%;
+	background-color: #f3f5f8;
+	font-size: 12px;
+	font-style: italic;
+	margin-bottom: 15px;
+	border: 1px solid #d1cece;   
+	padding: 15px 30px;
+}
+
+.contact-form-area .form-control:focus {
+	border-left: 3px solid #f78e21;
+	box-shadow: none; 
+}
+
+.contact-form-area textarea.form-control {
+	height: 200px;
+	-webkit-transition-duration: 500ms;
+	transition-duration: 500ms; 
+}
+
+.comment-btn {
+	max-width: 100%;
+	color: #fff;
+	cursor: pointer;
+	height: auto;
+	line-height: 30px;
+	text-align: center;
+	background-color: #f78e21;   
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	text-transform: uppercase;
+	border: 0;
+}
+
+.comment-btn:hover {
+	color: #000;
+}
+
+  
+/*--- RESPONSIVE ---*/
+
+@media screen and (max-width: 568px) {	
+	#heading-section img {
+		display: none;
+	}
+
+	.recipe-img {		
+		height: auto;	
+		max-width: 100%; 	
+	}
+
+	.recipe-description {
+		margin: auto;
+		text-align: justify;
+	}
+
+	.recipe-duration {
+		margin: auto;
+	}
+
+	.recipe-ratings {
+		float: inline-end;
+	}
+	
+	.preparation-step {
+		margin: auto;
+	}
+}
+  
+@media screen and (max-width: 600px) {
+	.heading-section img {
+		display: none;
+	}
+
+	.recipe-img {		
+		height: auto;	
+		max-width: 100%; 	
+	}
+
+	body {
+		overflow-x: hidden;
+	}
+}
+
+@media (max-width: 576px) {
+	.comment-btn {
+		margin-left: 12px;
+	}	
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.ingredients {
+		margin-bottom: 80px; 
+	}	
+}
+
+@media only screen and (max-width: 767px) {
+	.recipe-img {		
+		height: auto;	
+		max-width: 100%; 	
+	}
+
+	.recipe-description {
+		margin: auto;
+		text-align: justify;
+	}
+
+	.recipe-duration {
+		margin: auto;
+	}
+
+	.recipe-ratings {
+		float: inline-end;
+	}
+
+	.ingredients {
+		margin-bottom: 80px; 
+	}
+
+	.preparation-step {
+		margin: auto;
+	}
+}
+
+/*--- END RESPONSIVE ---*/
+

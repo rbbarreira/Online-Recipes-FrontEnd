@@ -1,0 +1,192 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #fff; 
+}  
+
+.half {
+  height: 100vh;
+  min-height: 700px; 
+}
+
+.half .contents, .half .bg {
+  width: 50%; 
+}
+
+.half .container > .row {
+  margin-top: 100px;
+}
+
+/* MODAL */
+
+.login-snip {
+  margin-top: 80px;  
+}
+
+.tab {
+	max-width: 45%;
+  width: 15em;
+  color: #888;
+	cursor: pointer;
+	height: auto;
+	line-height: 30px;
+	text-align: center; 
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	border: 2px solid #d1cece; 
+}
+
+.login-snip .login,
+.login-snip .sign-up-form{
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+  transform:rotateY(180deg);
+  backface-visibility:hidden;
+  transition:all .4s linear;
+}
+
+.login-space{
+  margin-top: 50px;
+  min-height:345px;
+  position:relative;
+  perspective:1000px;
+  transform-style:preserve-3d;
+}
+
+.login-space .group .check:checked + label .icon:before{
+  transform:scale(1) rotate(45deg);
+}
+.login-space .group .check:checked + label .icon:after{
+  transform:scale(1) rotate(-45deg);
+}
+.login-snip .sign-in:checked + .tab + .sign-up + .tab + .login-space .login{
+  transform:rotate(0);
+}
+.login-snip .sign-up:checked + .tab + .login-space .sign-up-form{
+  transform:rotate(0);
+}
+
+.login-snip .sign-in:checked + .tab,
+.login-snip .sign-up:checked + .tab{
+    color:#fff;
+    background-color:#fb8633;
+}
+
+/* Form */
+
+.half .contents .form-control, .half .bg .form-control {
+	height: 52px;
+	width: 100%;
+	background-color: #f3f5f8;
+	font-size: 14px;	
+	margin-bottom: 15px;
+	border: 1px solid #d1cece;   
+	padding: 15px 30px;
+}
+
+.half .contents .form-control, .half .bg .form-control:focus {
+  border-left: 3px solid #f78e21;
+	box-shadow: none; 
+}
+
+.half .bg {
+  background-size: cover;
+  background-position: center; 
+}
+
+.half .btn {
+	max-width: 100%;
+  width: 35em;
+	color: #fff;
+	cursor: pointer;
+	height: auto;
+	line-height: 30px;
+	text-align: center;
+	background-color: #f78e21;   
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	text-transform: uppercase;
+	border: 0;
+}
+
+.half .btn:hover {
+  color: #000;
+}
+
+.half .forgot-pass {
+  position: relative;
+  top: 2px;
+  font-size: 14px;
+  color: #888;
+  text-decoration: underline;  
+} 
+
+  
+/* Radio Buttons - Remember Me */
+
+input[type="radio"] {
+  opacity: 0;
+}  
+
+.control {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-size: 14px; 
+}
+
+.control .caption {
+  position: relative;
+  top: .2rem;
+  color: #888; 
+}
+
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0; 
+}
+
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #e6e6e6;
+  border-radius: 4px; 
+}
+
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: #fb8633; 
+}
+
+.member {  
+  font-size: 14px;
+  color: #888;
+  text-decoration: underline;  
+  cursor: pointer;
+  float: inline-end;
+}
+
+/* Responsive */
+
+@media (max-width: 991.98px) {
+  .half .bg {
+    height: 200px; 
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .half .contents, .half .bg {
+    width: 100%; 
+  }
+}
+
