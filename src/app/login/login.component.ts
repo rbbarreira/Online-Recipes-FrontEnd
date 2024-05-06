@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RecipesService } from '../services/recipes.service';
+import { IUserRegister } from '../interfaces/iuser-register';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -89,31 +91,56 @@ import { RecipesService } from '../services/recipes.service';
 export class LoginComponent {
   recipesService = inject(RecipesService);
 
-  loginIn = new FormGroup({
+  constructor(private builder: FormBuilder, private service: UserService) {
+
+  }
+
+  _response: any;
+
+  _regform = this.builder.group({
+    username: this.builder.control('', Validators.compose([Validators.required])),
+    email: this.builder.control('', Validators.required),
+    password: this.builder.control('', Validators.required),
+    confirmepassword: this.builder.control('', Validators.required)
+  })
+
+    loginIn = new FormGroup({
     user: new FormControl(''),
     pass: new FormControl(''),       
   });
 
   submitLogin() {
-    this.recipesService.submitLogin(
+      this.recipesService.submitLogin(
       this.loginIn.value.user ?? '',
       this.loginIn.value.pass ?? ''
     )
   }
   
-  signIn = new FormGroup({
-    UserName: new FormControl(''),
-    Password: new FormControl(''),
-    ConfirmPassword: new FormControl(''),
-    Email: new FormControl(''),
+    signIn = new FormGroup({
+    UserName: new FormControl('', Validators.required),
+    Email: new FormControl('', Validators.required),
+    Password: new FormControl('', Validators.required),
+    ConfirmPassword: new FormControl('', Validators.required)    
   });
 
   submitSignin() {
-    this.recipesService.submitSignin(
-      this.signIn.value.UserName ?? '',
-      this.signIn.value.Password ?? '',
-      this.signIn.value.ConfirmPassword ?? '',
-      this.signIn.value.Email ?? ''
-    )
+    if(this.signIn.valid) {
+      let _obj: IUserRegister = {
+        userName: this.signIn.value.UserName as string,
+        email: this.signIn.value.Email as string,
+        password: this.signIn.value.Password as string,
+        confirmPassword: this.signIn.value.ConfirmPassword as string
+      }
+      this.service.UserRegister(_obj).subscribe(item => {
+        this._response = item;
+        if(this._response.result=='pass') {
+
+        }else{
+
+        }
+
+      });
+    }   
   }  
+  
 }

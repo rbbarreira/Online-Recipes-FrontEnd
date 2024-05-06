@@ -11,6 +11,11 @@ const routeConfig: Routes = [
         title: 'Online Recipes'
     },
     {
+        path: 'home',
+        component: HomeComponent,
+        title: 'Online Recipes'
+    },
+    {
         path: 'details/:id',
         component: DetailsComponent,
         title: 'Recipes Details'
