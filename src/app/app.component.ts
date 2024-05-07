@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { HomeComponent } from "./home/home.component";
+import { HomeComponent } from "./Components/home/home.component";
 
 @Component({
     selector: 'app-root',
@@ -8,8 +8,7 @@ import { HomeComponent } from "./home/home.component";
     imports: [RouterOutlet, HomeComponent, RouterModule],
     template: `  
     
-    
-    <router-outlet (deactivate)="scrollToTop()"></router-outlet>
+    <router-outlet (deactivate)="scrollToTop()"></router-outlet>    
 
   `,
   

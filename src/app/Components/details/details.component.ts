@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { RecipesService } from '../services/recipes.service';
+import { RecipesService } from '../../services/recipes.service';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
-import { Difficulty, IRecipes, Measure } from '../interfaces/irecipes';
+import { Difficulty, IRecipes, Measure } from '../../interfaces/irecipes';
 
 @Component({
     selector: 'app-details',

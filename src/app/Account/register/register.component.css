@@ -16,65 +16,6 @@ body {
   margin-top: 100px;
 }
 
-/* MODAL */
-
-.login-snip {
-  margin-top: 80px;  
-}
-
-.tab {
-	max-width: 45%;
-  width: 15em;
-  color: #888;
-	cursor: pointer;
-	height: auto;
-	line-height: 30px;
-	text-align: center; 
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 600;
-	border: 2px solid #d1cece; 
-}
-
-.login-snip .login,
-.login-snip .sign-up-form{
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  position:absolute;
-  transform:rotateY(180deg);
-  backface-visibility:hidden;
-  transition:all .4s linear;
-}
-
-.login-space{
-  margin-top: 50px;
-  min-height:345px;
-  position:relative;
-  perspective:1000px;
-  transform-style:preserve-3d;
-}
-
-.login-space .group .check:checked + label .icon:before{
-  transform:scale(1) rotate(45deg);
-}
-.login-space .group .check:checked + label .icon:after{
-  transform:scale(1) rotate(-45deg);
-}
-.login-snip .sign-in:checked + .tab + .sign-up + .tab + .login-space .login{
-  transform:rotate(0);
-}
-.login-snip .sign-up:checked + .tab + .login-space .sign-up-form{
-  transform:rotate(0);
-}
-
-.login-snip .sign-in:checked + .tab,
-.login-snip .sign-up:checked + .tab{
-    color:#fff;
-    background-color:#fb8633;
-}
-
 /* Form */
 
 .half .contents .form-control, .half .bg .form-control {
@@ -82,7 +23,7 @@ body {
 	width: 100%;
 	background-color: #f3f5f8;
 	font-size: 14px;	
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 	border: 1px solid #d1cece;   
 	padding: 15px 30px;
 }

@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RecipesListComponent } from '../recipes-list/recipes-list.component';
+import { RecipesListComponent } from '../../Recipes/recipes-list/recipes-list.component';
 import { FooterComponent } from "../footer/footer.component";
 import { HeaderComponent } from "../header/header.component";
-import { IRecipes } from '../interfaces/irecipes';
-import { RecipesService } from '../services/recipes.service';
+import { IRecipes } from '../../interfaces/irecipes';
+import { RecipesService } from '../../services/recipes.service';
 
 @Component({
     selector: 'app-home',
