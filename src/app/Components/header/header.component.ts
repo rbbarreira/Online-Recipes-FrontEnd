@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -13,10 +14,14 @@ import { RouterModule } from '@angular/router';
       <div id="top-header">
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="home-account">
-                <a href="#login" [routerLink]="['/login']">Login / Register <i class="fa fa-sign-out"></i></a>
-                <a href="#">My account <i class="fa fa-user-circle-o"></i></a>
+                @if(UserRole!=null) {
+                  <a href="#register" [routerLink]="['/painel']">User: {{LoginUser}} <i class="fa fa-user-circle-o"></i></a>                    
+                }@else {                   
+                  <a href="#login" [routerLink]="['/login']">Login <i class="fa fa-sign-in"></i></a>
+                }           
+                <button class="logout" (click)="ClearData()">Logout  <i class="fa fa-sign-out"></i></button>               
               </div>
             </div>                           
           </div>
@@ -57,6 +62,25 @@ import { RouterModule } from '@angular/router';
   `,
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, DoCheck {  
 
+  constructor(private router: Router, private toastr: ToastrService) { }
+
+  LoginUser = ''
+  UserRole= ''
+
+  ngOnInit(): void { }
+
+  ngDoCheck(): void { 
+    this.LoginUser=localStorage.getItem('userName') as string;
+    this.UserRole=localStorage.getItem('role') as string;   
+  }  
+
+  ClearData() {
+    localStorage.clear();
+    if(this.LoginUser!=null) {
+      this.toastr.info('Logout successfully', 'Logout');
+    this.router.navigateByUrl('/home');
+    }    
+  }
 }
