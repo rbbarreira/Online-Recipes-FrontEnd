@@ -17,3 +17,18 @@ export const authGuard: CanActivateFn = (route, state) => {
     return false;
   }  
 };
+
+export const authGuardRole: CanActivateFn = (route, state) => {
+  
+  let toastr = inject(ToastrService);
+
+  let UseRole = localStorage.getItem('role') as string;
+
+  if( localStorage.getItem('userName')!=null && UseRole === 'Admin') {    
+      return true;  
+    }
+    else {
+      toastr.warning('Unauthorizes Access');      
+      return false;
+    }
+};

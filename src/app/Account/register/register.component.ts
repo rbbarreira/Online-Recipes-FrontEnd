@@ -79,8 +79,7 @@ export class RegisterComponent {
         confirmPassword: this.signIn.value.confirmpassword as string
       }
       this.userService.UserRegister(_obj).subscribe(item => {
-        this._response = item;
-        console.log(this._response)
+        this._response = item;        
         if(this._response.result=='Success') {
           this.toastr.success('Registration complete successfully', 'Success');
           this.router.navigateByUrl('/login');

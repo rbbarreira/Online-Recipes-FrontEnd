@@ -160,17 +160,13 @@ export class DetailsComponent {
   recipesService = inject(RecipesService);
   recipesList: IRecipes | undefined;
 
-  public DifficultyEnum(value : any) {
-    return Difficulty[value];
-  }
+  public DifficultyEnum(value : any) { return Difficulty[value]; }
 
-  public MeasureEnum(value : any) {
-    return Measure[value];
-  }
+  public MeasureEnum(value : any) { return Measure[value]; }
   
   constructor() {
     const recipesListId = Number(this.route.snapshot.params['id']);
-    this.recipesService.getAllRecipesById(recipesListId).then(recipesList => {
+    this.recipesService.GetRecipesById(recipesListId).then(recipesList => {
       this.recipesList = recipesList;
     });
   }
