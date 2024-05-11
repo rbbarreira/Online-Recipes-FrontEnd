@@ -15,7 +15,7 @@ import { Difficulty, IRecipes } from '../../interfaces/irecipes';
         <div class="container">
             <div class="blog-post">
                 <div class="blog-thumb">
-                    <a href="#" [routerLink]="['details', recipesList.id] ">
+                    <a href="#" [routerLink]="['/details', recipesList.id] ">
                         <img [src]="recipesList.photo" alt="Photo of {{ recipesList.name }}">                                
                     </a>
                 </div>

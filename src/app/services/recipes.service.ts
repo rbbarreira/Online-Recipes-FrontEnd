@@ -1,30 +1,33 @@
 import { Injectable } from '@angular/core';
-import { IRecipes } from '../interfaces/irecipes';
-
+import { CreateRecipe, IRecipes } from '../interfaces/irecipes';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RecipesService {
   url = 'https://localhost:7103/api';
 
-  constructor() { }
+  constructor(private http: HttpClient) {} 
 
-  async getAllRecipes() : Promise<IRecipes[]> {
-    const data = await fetch(`${this.url}/Recipe/List Recipe`);
-    return await data.json() ?? [];
+  GetAllRecipes() {
+    return this.http.get<IRecipes[]>(this.url + '/Recipe/List Recipes');
   }
 
-  async getAllRecipesById(id: Number): Promise<IRecipes | undefined> {
+  async GetRecipesById(id: Number): Promise<IRecipes | undefined> {
     const data = await fetch(`${this.url}/Recipe/Search By ${id}`);
-    return await data.json() ?? {};
+    return (await data.json()) ?? {};
   }
   
-  submitLogin(user: string, password: string) {
-    console.log(user, password);
+  CreateRecipes(data: CreateRecipe) {
+    return this.http.post(this.url + '/Recipe/Create Recipe', data);
   }
 
-  submitSignin(createUser: string, createPass: string, repeatPass: string, email: string) {
-    console.log(createUser, createPass, repeatPass, email);
+  UpdateRecipes(data: CreateRecipe) {
+    return this.http.put(this.url + '/Recipe/Update Recipe', data);
+  }
+
+  DeleteRecipes(id: number) {
+    return this.http.delete(this.url + '/Recipe/Delete By?=' + id);
   }
 }

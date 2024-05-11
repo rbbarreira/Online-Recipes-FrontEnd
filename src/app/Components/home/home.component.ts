@@ -122,7 +122,7 @@ export class HomeComponent {
   recipesService: RecipesService = inject(RecipesService);
 
   constructor() {
-    this.recipesService.getAllRecipes().then((recipesLocationList: IRecipes[] ) => {
+    this.recipesService.GetAllRecipes().subscribe((recipesLocationList: IRecipes[] ) => {
         this.recipesLocationList = recipesLocationList;
     })
   }

@@ -1,0 +1,31 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card {
+    margin: 2%;
+    text-align: left;
+    width: 90%;
+    margin-left: 5%;
+    border: 1px solid #ccc;
+}
+
+mat-mdc-raised-button {
+    width: auto;
+}
+
+.buttonRole {
+    margin-left: 74%;
+}
+
+.table-header {
+    background-color: #3c54de;
+    color: white;
+}
+
+th {
+    text-align: center;
+}
+
+.action {
+    background-color: rgb(81, 210, 81);
+}

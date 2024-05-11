@@ -55,36 +55,35 @@ import { Login, LoginResponse } from '../../interfaces/iuser';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService, 
+  constructor(private userService: UserService,
     private toastr: ToastrService, private router: Router) { }
 
-  ngOnInit(): void {       
+  ngOnInit(): void {
   }
-    _response!: LoginResponse;
-   
-    loginIn = new FormGroup({
+  _response!: LoginResponse;
+
+  loginIn = new FormGroup({
     email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)    
+    password: new FormControl('', Validators.required)
   });
 
   submitLogin() {
-    
-    if(this.loginIn.valid) {
-      let _obj:Login = {
+
+    if (this.loginIn.valid) {
+      let _obj: Login = {
         email: this.loginIn.value.email as string,
         password: this.loginIn.value.password as string
       }
       this.userService.UserLogin(_obj).subscribe(item => {
-        this._response = item;
-        console.log(this._response)
+        this._response = item;        
         localStorage.setItem('token', this._response.token);
         localStorage.setItem('userName', this._response.userName);
         localStorage.setItem('role', this._response.role);
         this.toastr.success('Login successfully', 'Success');
         this.router.navigateByUrl('/home');
       }, error => {
-        this.toastr.error('Failed to login', error.error.title)
+        this.toastr.error('Failed to login', error.error.message)
       });
     }
-  }   
+  }
 }

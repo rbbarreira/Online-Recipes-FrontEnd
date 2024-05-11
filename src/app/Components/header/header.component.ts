@@ -38,7 +38,7 @@ import { ToastrService } from 'ngx-toastr';
             <div class="col-md-6">
               <div class="main-menu">
                 <ul>
-                  <li><a href="#home">Home</a></li>
+                  <li><a href="#home" [routerLink]="['/home']">Home</a></li>
                   <li><a href="#about" [routerLink]="['/about']">About</a></li>
                   <li><a href="#recipes">Recipes</a></li>
                   <li><a href="#contact">Contact</a></li>

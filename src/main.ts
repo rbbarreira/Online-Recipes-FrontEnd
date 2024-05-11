@@ -4,12 +4,17 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import routeConfig from './app/Routes/app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { tokenInterceptor } from './app/services/token.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routeConfig), provideHttpClient(), provideToastr({closeButton:true}), provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync()
+    provideRouter(routeConfig), 
+    provideHttpClient(withInterceptors([tokenInterceptor])), 
+    provideToastr({closeButton:true}), 
+    provideAnimationsAsync(), 
+    provideAnimationsAsync()
   ]
 }).catch((err) => console.error(err));

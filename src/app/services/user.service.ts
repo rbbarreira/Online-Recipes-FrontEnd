@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { Register, Login, LoginResponse, ListUser } from '../interfaces/iuser';
+import { Register, Login, LoginResponse, User } from '../interfaces/iuser';
 
 @Injectable({
   providedIn: 'root',
@@ -12,15 +12,25 @@ export class UserService {
 
   _menuList = signal<LoginResponse[]>([]);
 
-  UserRegister(_data: Register) {
-    return this.http.post(this.url + '/Account/Register', _data);
+  UserRegister(data: Register) {
+    return this.http.post(this.url + '/Account/Register', data);
   }  
 
-  UserLogin(_data: Login) {
-    return this.http.post<LoginResponse>(this.url + '/Account/Login', _data);
-  }  
+  UserLogin(data: Login) {
+    return this.http.post<LoginResponse>(this.url + '/Account/Login', data);
+  }
 
-  GetUser(_data: ListUser) {
-    return this.http.get(this.url + 'AccountAdmin/List Users - Admin');
-  }  
+  GetAll() {
+    return this.http.get<User[]>(this.url + '/AccountAdmin/List Users');
+  }
+
+  async GetUserById(id: Number): Promise<User | undefined> {
+    const data = await fetch(`${this.url}/AccountAdmin/Search By ${id}`);
+    return (await data.json()) ?? {};
+  }
+
+  UpdateUser(data: User) {
+    return this.http.put(this.url + '/AccountAdmin/Update User', data);
+  }
 }
+

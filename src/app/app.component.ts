@@ -8,7 +8,7 @@ import { HomeComponent } from "./Components/home/home.component";
     imports: [RouterOutlet, HomeComponent, RouterModule],
     template: `  
     
-    <router-outlet (deactivate)="scrollToTop()"></router-outlet>    
+    <router-outlet (deactivate)="scrollToTop()"></router-outlet>        
 
   `,
   
