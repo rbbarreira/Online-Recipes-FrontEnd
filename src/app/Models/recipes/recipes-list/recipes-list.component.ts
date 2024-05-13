@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Difficulty, IRecipes } from '../../interfaces/irecipes';
+import { Difficulty, Recipes } from '../../../interfaces/irecipes';
 
 @Component({
   selector: 'app-recipes-list',
@@ -34,7 +34,7 @@ import { Difficulty, IRecipes } from '../../interfaces/irecipes';
   styleUrl: './recipes-list.component.css'
 })
 export class RecipesListComponent {
-  @Input() recipesList!: IRecipes;
+  @Input() recipesList!: Recipes;
 
   public DifficultyEnum(value : number) {
     return Difficulty[value];

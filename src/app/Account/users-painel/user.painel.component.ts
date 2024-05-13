@@ -16,34 +16,33 @@ import { AppComponent } from "../../app.component";
         <button mat-icon-button (click)= "drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>Account  Management</span>
+        <span>User Board System</span>
         <span class="example-spacer"></span>
-        <span>{{LoginUser}}</span>
-          <button mat-button [mat-menu-trigger-for]= "profile"><mat-icon>arrow_drop_down</mat-icon></button>
-        <mat-menu #profile>
-          <button mat-menu-item>User Profile</button>
-        </mat-menu>  
+        <span>User:{{LoginUser}}</span> <span>Role:{{LoginRole}}</span>
       </mat-toolbar>
       <mat-drawer-container autosize>
         <mat-drawer #drawer opened="true" mode="side" position="start">
           <mat-nav-list>
             <mat-list-item>
-              <button mat-button [routerLink]="['/home']"><mat-icon>home</mat-icon>Home</button>
-            </mat-list-item>
-                
+              <button mat-button [routerLink]="['/painel/usersSetting']"><mat-icon>home</mat-icon>Board</button>
+            </mat-list-item>            
             <mat-list-item>
-              <button mat-button [routerLink]="['users']"><mat-icon>home</mat-icon>Users</button>
-            </mat-list-item>
-         
+              <button mat-button [routerLink]="['users']"><mat-icon>group</mat-icon>Users</button>
+            </mat-list-item>         
             <mat-list-item>
-              <button mat-button [routerLink]="['recipe']"><mat-icon>home</mat-icon>Recipes</button>
+              <button mat-button [routerLink]="['recipe']"><mat-icon>restaurant_menu</mat-icon>Recipe</button>
             </mat-list-item>
-            
+            <mat-list-item>
+              <button mat-button [routerLink]="['ingredients']"><mat-icon>shopping_cart</mat-icon>Ingredient</button>
+            </mat-list-item> 
+            <mat-list-item>
+              <button mat-button [routerLink]="['categories']"><mat-icon>category</mat-icon>Category</button>
+            </mat-list-item>           
           </mat-nav-list>
         </mat-drawer>
         <mat-drawer-content>
           <div style="text-align: center; min-height: 600px;">
-            <router-outlet></router-outlet>                      
+            <router-outlet></router-outlet>
           </div>
         </mat-drawer-content>
       </mat-drawer-container>      
@@ -59,10 +58,14 @@ export class UserPainelComponent implements OnInit, DoCheck {
 
   constructor() { }
 
-  LoginUser = ''  
+  LoginUser = ''
+  LoginRole = ''
 
   ngOnInit(): void { }
 
-  ngDoCheck(): void { this.LoginUser=localStorage.getItem('userName') as string; }  
+  ngDoCheck(): void { 
+    this.LoginUser=localStorage.getItem('userName') as string; 
+    this.LoginRole=localStorage.getItem('role') as string; 
+  }  
   
 }

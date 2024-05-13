@@ -65,7 +65,7 @@ export class UsersEditComponent {
 
   response: any;
   userListId: any;
-  userList!: User | any;
+  userList!: User;
 
   userForm = this.builder.group({
     id:this.builder.control(0),
@@ -80,7 +80,7 @@ export class UsersEditComponent {
 
     this.userListId = Number(this.route.snapshot.params['id']);
     this.userForm.controls['id'].disable();
-    this.service.GetUserById(this.userListId).then(item => {
+    this.service.GetUserById(this.userListId).subscribe(item => {
       this.userList = item;
       this.userForm.setValue({
         id: this.userList?.id,

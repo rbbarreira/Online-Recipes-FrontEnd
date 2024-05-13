@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { MaterialModule } from '../../Modules/material.module';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CreateRecipe } from '../../interfaces/irecipes';
-import { RecipesService } from '../../services/recipes.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../Modules/material.module';
+import { RecipesService } from '../../../services/recipes.service';
+import { CreateRecipe } from '../../../interfaces/irecipes';
 
 @Component({
-  selector: 'app-recipes-create',
+  selector: 'app-recipes-edit',
   standalone: true,
   imports: [CommonModule, MaterialModule, ReactiveFormsModule, RouterLink],
   template: `   
@@ -39,8 +39,22 @@ import { CommonModule } from '@angular/common';
             
           <mat-form-field class="mat-50">
             <mat-label>CookingTime</mat-label>
-            <input formControlName="cookingTime" matInput />
+            <input formControlName="cookingTime" matInput/>
           </mat-form-field>
+
+          <table formArrayName="ingredients">
+          <mat-label>Ingredients</mat-label>
+          <tbody>
+            <tr *ngFor="let item of ingredients.controls;let i=index" [formGroupName]="i">
+              <td><input placeholder="product" formControlName="product"></td>              
+              <td><button mat-button color="accent" (click)="Removeitem(i)">(remove)</button></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="div-50">
+          <a mat-raised-button color="primary" (click)="IngredientsArray()">Add New Ingredient</a>
+        </div>
 
           <mat-form-field class="mat-50">
             <mat-label>Photo</mat-label>
@@ -56,7 +70,8 @@ import { CommonModule } from '@angular/common';
               <input class="fileInput" type="file" (change)="setFileData($event)"/>
             </div>
               <input formControlName="photo" matInput />
-          </mat-form-field>           
+          </mat-form-field>
+
         </mat-card-content>
         <mat-card-actions>
           <div class="div-50">
@@ -67,52 +82,66 @@ import { CommonModule } from '@angular/common';
           </div>
         </mat-card-actions>
       </mat-card>
-
     </form>
   </body>   
   `,
-  styleUrl: './recipes-create.component.css'
+  styleUrl: './recipes-edit.component.css'
 })
-export class RecipesCreateComponent {
+export class RecipesEditComponent {
   builder: FormBuilder = inject(FormBuilder);
   service: RecipesService = inject(RecipesService);
   route: ActivatedRoute = inject(ActivatedRoute);
   router: Router = inject(Router);
   toastr: ToastrService = inject(ToastrService);
 
+  constructor() {       
+    const recipeListId = Number(this.route.snapshot.params['id']);        
+    this.service.GetRecipesById(recipeListId).subscribe(item => {
+      this.recipeList = item;
+      if(this.recipeList?.id != undefined) {
+        this.title = 'Edit Recipe';
+      }
+      this.recipeForm.controls['name'].setValue(this.recipeList.name),
+      this.recipeForm.controls['description'].setValue(this.recipeList.description),
+      this.recipeForm.controls['difficulty'].setValue(this.recipeList.difficulty),
+      this.recipeForm.controls['cookingTime'].setValue(this.recipeList.cookingTime),
+      this.recipeForm.controls['photo'].setValue(this.recipeList.photo)      
+    });   
+    this.IngredientsArray();
+  }
+
   response: any;
   difficulty: any;
-  title = 'Create Recipe';
-  isEdit = false;
-  recipeListId: any;
-  recipeList!: CreateRecipe | any;
+  title = 'Create Recipe'; 
+  recipeList!: CreateRecipe;
+  items!: FormArray;
 
-  recipeForm = this.builder.group({   
-    
-    name: this.builder.control(''),
-    description: this.builder.control(''),
-    difficulty: this.builder.control(0),
-    cookingTime: this.builder.control(0),
-    photo: this.builder.control('')    
+  recipeForm = new FormGroup({       
+    name: new FormControl(''),
+    description: new FormControl(''),
+    difficulty: new FormControl(0),
+    cookingTime: new FormControl(0),
+    photo: new FormControl(''),
+    ingredients: new FormArray([])
   });
 
-  constructor() {
-    
-    this.recipeListId = Number(this.route.snapshot.params['id']);
-    this.title = 'Edit Recipe';
-    this.isEdit = true;
-   
-    this.service.GetRecipesById(this.recipeListId).then(item => {
-      this.recipeList = item;
-      this.recipeForm.setValue({
-        
-        name: this.recipeList?.name,
-        description: this.recipeList?.description,
-        difficulty: this.recipeList?.difficulty,
-        cookingTime: this.recipeList?.cookingTime,
-        photo: this.recipeList?.photo
-      })
-    });      
+  IngredientsArray() {
+    this.items = this.recipeForm.get('ingredients') as FormArray;
+    this.items.push(this.GetIngredients())
+  }
+
+  get ingredients() { return this.recipeForm.get('ingredients') as FormArray; }
+
+  GetIngredients() : FormGroup {
+    return new FormGroup({      
+      product: new FormControl(''),
+      ingredient_Quantities: new FormArray([])
+    });
+  }
+
+  Removeitem(index:any){
+    this.items = this.recipeForm.get("ingredients") as FormArray;
+    this.items.removeAt(index)
   }
 
   setFileData(event: Event): void {
@@ -125,9 +154,9 @@ export class RecipesCreateComponent {
       });
       reader.readAsDataURL(file);
     }
-  }  
+  }
 
-  SaveRecipe() {
+  SaveRecipe() {   
     if (this.recipeForm.valid) {
       let _obj: CreateRecipe = {
         id: this.recipeList?.id,
@@ -135,7 +164,8 @@ export class RecipesCreateComponent {
         description: this.recipeForm.value.description as string,
         difficulty: this.recipeForm.value.difficulty as number,
         cookingTime: this.recipeForm.value.cookingTime as number,
-        photo: this.recipeForm.value.photo as string
+        photo: this.recipeForm.value.photo as string,
+        ingredients: this.recipeForm.value.ingredients as any
       }
       if(this.recipeList?.id == undefined) {        
       this.service.CreateRecipes(_obj).subscribe(item => {

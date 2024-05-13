@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Difficulty, IRecipes } from '../../interfaces/irecipes';
-import { RecipesService } from '../../services/recipes.service';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Difficulty, Recipes } from '../../../interfaces/irecipes';
+import { RecipesService } from '../../../services/recipes.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
-import { MaterialModule } from '../../Modules/material.module';
 import { Router, RouterLink } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MaterialModule } from '../../../Modules/material.module';
 
 @Component({
   selector: 'app-recipes',
@@ -71,23 +71,25 @@ import { MatSort } from '@angular/material/sort';
   `,
   styleUrl: './recipes.component.css',
 })
-export class RecipesComponent implements OnInit {
-  recipeList!: IRecipes[];
+export class RecipesComponent {
+  service: RecipesService =inject(RecipesService);
+  toastr: ToastrService =inject(ToastrService);
+  router: Router =inject(Router);
+
+  recipeList!: Recipes[];
   displayColumns: string[] = [ 'id', 'name', 'difficulty', 'cookingTime', 'createDate', 'action', ];
   dataSource: any;
+  response: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(
-    private recipeService: RecipesService, private toastr: ToastrService, private router: Router ) {}
-
-  ngOnInit(): void { this.LoadRecipe(); }
+  constructor() { this.LoadRecipe(); }  
 
   LoadRecipe() {
-    this.recipeService.GetAllRecipes().subscribe((item) => {
+    this.service.GetAllRecipes().subscribe((item) => {
       this.recipeList = item;
-      this.dataSource = new MatTableDataSource<IRecipes>(this.recipeList);
+      this.dataSource = new MatTableDataSource<Recipes>(this.recipeList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -99,12 +101,22 @@ export class RecipesComponent implements OnInit {
     this.router.navigateByUrl('/painel/recipeEdit/'+id);
   }
 
-  functionDelete(id: number) {}
-
-  UserAccess() {
-    let UseRole = localStorage.getItem('role') as string;
-    if( UseRole === 'Admin') { return true; }
-      else { this.toastr.warning('Unauthorizes Access'); return false; }
-  }
+  functionDelete(id: number) {
+    let UseRole = localStorage.getItem('role') as string;    
+    if( UseRole === 'Admin') {
+      if(confirm('Confirm Delete?')) {
+        this.service.DeleteRecipes(id).subscribe(item => {
+          this.response = item;
+          if(this.response.result=='Success') {
+            this.toastr.success('Delete successfully', 'Success');
+            this.LoadRecipe();
+          }
+          }, error => {
+            this.toastr.error('Delete Failed', error.error.message)
+        });   
+      }      
+    }else {
+      this.toastr.warning('Unauthorizes Access');
+    }    
+  } 
 }
-

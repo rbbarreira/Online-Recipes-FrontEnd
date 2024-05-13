@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
             <div class="col-md-12">
               <div class="home-account">
                 @if(UserRole!=null) {
-                  <a href="#register" [routerLink]="['/painel']">User: {{LoginUser}} <i class="fa fa-user-circle-o"></i></a>                    
+                  <a href="#register" [routerLink]="['/painel/usersSetting']">User: {{LoginUser}} <i class="fa fa-user-circle-o"></i></a>                    
                 }@else {                   
                   <a href="#login" [routerLink]="['/login']">Login <i class="fa fa-sign-in"></i></a>
                 }           

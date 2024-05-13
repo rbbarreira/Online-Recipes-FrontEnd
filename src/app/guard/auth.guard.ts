@@ -12,7 +12,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   }
   else {
-    toastr.warning('Unauthorizes Access');
+    toastr.warning('Unauthorize Access');
     router.navigateByUrl('/login');
     return false;
   }  
@@ -28,7 +28,7 @@ export const authGuardRole: CanActivateFn = (route, state) => {
       return true;  
     }
     else {
-      toastr.warning('Unauthorizes Access');      
+      toastr.warning('Unauthorize Access');      
       return false;
     }
 };

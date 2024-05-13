@@ -24,13 +24,15 @@ export class UserService {
     return this.http.get<User[]>(this.url + '/AccountAdmin/List Users');
   }
 
-  async GetUserById(id: Number): Promise<User | undefined> {
-    const data = await fetch(`${this.url}/AccountAdmin/Search By ${id}`);
-    return (await data.json()) ?? {};
+  GetUserById(id: number) {
+    return this.http.get<User>(`${this.url}/AccountAdmin/Search By ${id}`);
   }
 
   UpdateUser(data: User) {
     return this.http.put(this.url + '/AccountAdmin/Update User', data);
+  }
+  DeleteUser(id: number) {
+    return this.http.delete(`${this.url}/AccountAdmin/Delete By ${id}`);
   }
 }
 
