@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Register } from '../../interfaces/iuser';
 import { UserService } from '../../services/user.service';
@@ -57,11 +57,13 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  service: UserService = inject(UserService);
+  toastr: ToastrService = inject(ToastrService);
+  router: Router = inject(Router);
 
-  constructor(private userService: UserService, 
-    private toastr: ToastrService, private router: Router) { }
+  constructor() {}
 
-  _response: any;
+  response: any;
 
     signIn = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -78,9 +80,9 @@ export class RegisterComponent {
         password: this.signIn.value.password as string,
         confirmPassword: this.signIn.value.confirmpassword as string
       }
-      this.userService.UserRegister(_obj).subscribe(item => {
-        this._response = item;        
-        if(this._response.result=='Success') {
+      this.service.UserRegister(_obj).subscribe(item => {
+        this.response = item;        
+        if(this.response.result=='Success') {
           this.toastr.success('Registration complete successfully', 'Success');
           this.router.navigateByUrl('/login');
         }

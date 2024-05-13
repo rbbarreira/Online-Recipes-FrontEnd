@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { MaterialModule } from '../../Modules/material.module';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
@@ -67,20 +67,22 @@ import { User } from '../../interfaces/iuser';
     styleUrl: './users.component.css',
     
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent {
+  service: UserService =inject(UserService);
+  router: Router =inject(Router);
+  toastr: ToastrService =inject(ToastrService);
 
   usersList!: User[];
   displayColumns: string[] = ["id","userName", "email", "role", "action"];
   dataSource: any;
+  response: any;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private userService: UserService, private toastr: ToastrService, private router: Router) { }
-
-  ngOnInit(): void { this.LoadUser(); }
+  constructor() { this.LoadUser(); }  
 
   LoadUser() {
-    this.userService.GetAll().subscribe(item => {
+    this.service.GetAll().subscribe(item => {
       this.usersList=item;
       this.dataSource = new MatTableDataSource<User>(this.usersList);
       this.dataSource.paginator = this.paginator;
@@ -91,5 +93,17 @@ export class UsersComponent implements OnInit {
     this.router.navigateByUrl('/painel/userEdit/'+id);
   }
 
-  functionDelete(id: number) {}
+  functionDelete(id: number) {
+    if( confirm('Confirm Delete?')) {
+      this.service.DeleteUser(id).subscribe(item => {
+        this.response = item;
+        if(this.response.result=='Success') {
+          this.toastr.success('Delete successfully', 'Success');
+          this.LoadUser();
+        }
+      }, error => {
+        this.toastr.error('Delete Failed', error.error.message)
+      }); 
+    }    
+  }
 }

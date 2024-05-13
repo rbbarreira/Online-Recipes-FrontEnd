@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -42,7 +42,6 @@ import { Login, LoginResponse } from '../../interfaces/iuser';
                     <button type="submit" class="btn btn-block btn-primary">Log In</button> 
                 </div>
               </form>
-
             </div>              
           </div>      
         </div>
@@ -53,14 +52,14 @@ import { Login, LoginResponse } from '../../interfaces/iuser';
   `,
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+  service: UserService = inject(UserService);
+  toastr: ToastrService = inject(ToastrService);
+  router: Router = inject(Router);
 
-  constructor(private userService: UserService,
-    private toastr: ToastrService, private router: Router) { }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
-  _response!: LoginResponse;
+  response!: LoginResponse;
 
   loginIn = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -68,17 +67,16 @@ export class LoginComponent implements OnInit {
   });
 
   submitLogin() {
-
     if (this.loginIn.valid) {
       let _obj: Login = {
         email: this.loginIn.value.email as string,
         password: this.loginIn.value.password as string
       }
-      this.userService.UserLogin(_obj).subscribe(item => {
-        this._response = item;        
-        localStorage.setItem('token', this._response.token);
-        localStorage.setItem('userName', this._response.userName);
-        localStorage.setItem('role', this._response.role);
+      this.service.UserLogin(_obj).subscribe(item => {
+        this.response = item;        
+        localStorage.setItem('token', this.response.token);
+        localStorage.setItem('userName', this.response.userName);
+        localStorage.setItem('role', this.response.role);
         this.toastr.success('Login successfully', 'Success');
         this.router.navigateByUrl('/home');
       }, error => {

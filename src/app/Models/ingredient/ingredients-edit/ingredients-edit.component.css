@@ -1,0 +1,33 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card {    
+    text-align: left;
+    width: 70%;
+    margin: 3% auto;
+    border: 1px solid #ccc;
+}
+
+.mat-mdc-form-field {
+    width: 98%;
+    margin: 1%;
+}
+
+.mat-50 {
+    width: 48%;
+    margin: 1%;
+}
+
+.div-50 {
+    width: 48%;
+    margin: 1%;
+    display: inline;
+}
+
+.mat-mdc-raised-button {
+    width: 100%;
+}
+
+button {
+    margin: 2px;
+}

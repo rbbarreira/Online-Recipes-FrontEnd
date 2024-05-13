@@ -7,7 +7,7 @@ import routeConfig from './app/Routes/app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { tokenInterceptor } from './app/services/token.interceptor';
+import { tokenInterceptor } from './app/interceptors/token.interceptor';
 
 bootstrapApplication(AppComponent, {
   providers: [

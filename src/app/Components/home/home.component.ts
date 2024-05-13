@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RecipesListComponent } from '../../Recipes/recipes-list/recipes-list.component';
 import { FooterComponent } from "../footer/footer.component";
 import { HeaderComponent } from "../header/header.component";
-import { IRecipes } from '../../interfaces/irecipes';
+import { Recipes } from '../../interfaces/irecipes';
 import { RecipesService } from '../../services/recipes.service';
+import { RecipesListComponent } from '../../Models/recipes/recipes-list/recipes-list.component';
 
 @Component({
     selector: 'app-home',
@@ -118,12 +118,12 @@ import { RecipesService } from '../../services/recipes.service';
     
 })
 export class HomeComponent {
-  recipesLocationList: IRecipes[] = [];
-  recipesService: RecipesService = inject(RecipesService);
+  recipesLocationList: Recipes[] = [];
+  service: RecipesService = inject(RecipesService);
 
   constructor() {
-    this.recipesService.GetAllRecipes().subscribe((recipesLocationList: IRecipes[] ) => {
-        this.recipesLocationList = recipesLocationList;
+    this.service.GetAllRecipes().subscribe((item: Recipes[] ) => {
+        this.recipesLocationList = item;
     })
   }
 }

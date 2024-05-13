@@ -14,6 +14,7 @@ import { MatMenuModule } from "@angular/material/menu"
 import { MatToolbarModule } from "@angular/material/toolbar"
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MatListModule } from "@angular/material/list";
         MatMenuModule,
         MatToolbarModule,
         MatSidenavModule,  
-        MatListModule,  
+        MatListModule,
+        MatTooltipModule 
     ],
     declarations: [ 
   ]

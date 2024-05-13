@@ -1,4 +1,4 @@
-export interface IRecipes {
+export interface Recipes {
   id: number;
   name: string;
   description: string;
@@ -30,8 +30,8 @@ export interface Ingredients {
 }
 
 export interface Categories {
-  name: string;
-  recipes: string;
+  id: number;
+  name: string;  
 }
 
 export interface Ingredient_Quantities {
@@ -62,7 +62,8 @@ export interface CreateRecipe {
   description: string;
   difficulty: Difficulty;
   cookingTime: number;
-  photo: string 
+  photo: string,
+  ingredients: Ingredients[];
 }
 
 
