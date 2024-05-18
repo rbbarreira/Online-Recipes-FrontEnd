@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CreateRecipe, Recipes } from '../interfaces/irecipes';
+import { Recipes } from '../interfaces/irecipes';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -18,11 +18,11 @@ export class RecipesService {
     return this.http.get<Recipes>(`${this.url}/Recipe/Search By ${id}`);
   }  
   
-  CreateRecipes(data: CreateRecipe) {
+  CreateRecipes(data: Recipes) {
     return this.http.post(this.url + '/Recipe/Create Recipe', data);
   }
 
-  UpdateRecipes(data: CreateRecipe) {
+  UpdateRecipes(data: Recipes) {
     return this.http.put(this.url + '/Recipe/Update Recipe', data);
   }
 

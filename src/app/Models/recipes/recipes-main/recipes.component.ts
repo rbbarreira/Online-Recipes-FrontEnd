@@ -43,9 +43,9 @@ import { MaterialModule } from '../../../Modules/material.module';
               <th mat-cell *matCellDef="let element">{{ element.cookingTime }}</th>
             </ng-container>
 
-            <ng-container matColumnDef="createDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header>Created</th>
-              <th mat-cell *matCellDef="let element">{{ element.createDate }}</th>
+            <ng-container matColumnDef="isApproved">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Approved</th>
+              <th mat-cell *matCellDef="let element">{{ element.isApproved }}</th>
             </ng-container>
 
             <ng-container matColumnDef="action">
@@ -77,7 +77,7 @@ export class RecipesComponent {
   router: Router =inject(Router);
 
   recipeList!: Recipes[];
-  displayColumns: string[] = [ 'id', 'name', 'difficulty', 'cookingTime', 'createDate', 'action', ];
+  displayColumns: string[] = [ 'id', 'name', 'difficulty', 'cookingTime', 'isApproved', 'action', ];
   dataSource: any;
   response: any;
 

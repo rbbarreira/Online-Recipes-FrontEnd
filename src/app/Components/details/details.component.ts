@@ -87,10 +87,8 @@ import { Difficulty, Recipes, Measure } from '../../interfaces/irecipes';
           <div class="col-12 col-lg-6 text-justify">
             <div class="preparation-step">                      
               <h3>Preparation</h3>                                          
-                <div *ngFor="let item of recipesList?.preparations">
-                  <div *ngFor="let row of item.steps; let i = 'index+1'">
-                    <p><strong>Step {{i}}:</strong><br> {{row}}</p>
-                  </div>               
+                <div *ngFor="let item of recipesList?.preparations; let i = 'index+1'">                  
+                  <p><strong>Step {{i}}:</strong><br> {{item.steps}}</p>                                 
                 </div>                 
             </div>                                     
           </div>  

@@ -81,11 +81,11 @@ import { Component } from '@angular/core';
                       <a class="nav-link active" ><i class="bx bx-user me-1"></i> Account</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="http://localhost:54440/painel/notifications"
+                      <a class="nav-link" href="/painel/notifications"
                         ><i class="bx bx-bell me-1"></i> Notifications</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="http://localhost:54440/painel/connections"
+                      <a class="nav-link" href="/painel/connections"
                         ><i class="bx bx-link-alt me-1"></i> Connections</a >
                     </li>
                   </ul>

@@ -7,11 +7,10 @@ export interface Recipes {
   photo: string;
   createDate: any;
   modifiedDate: any;
+  isApproved: string;
   ingredients: Ingredients[];
-  categories: Categories[];
-  rating: Ratings[];
+  categories: Categories[];  
   preparations: Preparations[];
-  comment: Comments[];
 }
 
 export enum Difficulty {
@@ -20,18 +19,15 @@ export enum Difficulty {
   Hard = 2,
 }
 
-export interface Preparations {
-  steps: string[];
-}
-
-export interface Ingredients {
-  product: string;
-  ingredient_Quantities: Ingredient_Quantities[];
-}
-
 export interface Categories {
   id: number;
   name: string;  
+}
+
+export interface Ingredients {
+  id: number;
+  product: string;
+  ingredient_Quantities: Ingredient_Quantities[];
 }
 
 export interface Ingredient_Quantities {
@@ -48,22 +44,17 @@ export enum Measure {
   un = 4,
 }
 
+export interface Preparations {
+  id: number;
+  steps: string;
+}
+
 export interface Ratings {
+  id: number;
   star: number;
 }
 
 export interface Comments {
+  id: number;
   usersComment: string;
 }
-
-export interface CreateRecipe {
-  id: number,
-  name: string;
-  description: string;
-  difficulty: Difficulty;
-  cookingTime: number;
-  photo: string,
-  ingredients: Ingredients[];
-}
-
-

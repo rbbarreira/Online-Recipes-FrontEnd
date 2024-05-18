@@ -3,7 +3,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-card {    
     text-align: left;
-    width: 70%;
+    width: 90%;
     margin: 3% auto;
     border: 1px solid #ccc;
 }
@@ -14,8 +14,29 @@ mat-card {
 }
 
 .mat-50 {
-    width: 48%;
+    width: 30%;
     margin: 1%;
+}
+
+.checkbox {
+    display: inline;    
+}
+
+.category {    
+    width: 30%;
+    display: inline;
+    position: absolute;   
+    padding: 0.7%;
+}
+
+p[_ngcontent-ng-c2882226389] {
+    text-align: center;
+    text-decoration: underline;
+}
+
+div.ng-untouched.ng-pristine.ng-valid {
+    width: 100%;
+    display: contents;
 }
 
 .div-50 {
@@ -36,19 +57,36 @@ button {
     margin: 2px;
 }
 
+.add a{
+    margin-top: -30px;
+    float: inline-start;
+    color: blue;
+    margin-left: 1%;
+}
+
+p {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding-top: 50px;
+    margin-left: 2%;
+    font-size: 19px;
+}
+
+.removePre {   
+    text-align: end;
+    margin-right: 2%;    
+}
+
 .fileUploadContainer {
     padding: 10px;
     width: 150px;
     height: auto;
     border: dashed 1px #b3b3b3;
     text-align: center;   
-    margin-left: 35%; 
+    margin-left: 40%; 
   
-    img {
-      display: block;
+    img {      
       margin-left: auto;
-      margin-right: auto;
-      max-height: 100%;
+      margin-right: auto;          
       max-width: 100%;
     }
     

@@ -47,10 +47,12 @@ import { RecipesListComponent } from '../../Models/recipes/recipes-list/recipes-
         </div>    
     <div class="container">
         <div class="row">
-            <div class="grid-recipes">    
-                <app-recipes-list
-                *ngFor="let recipesList of recipesLocationList" [recipesList]="recipesList">          
-                </app-recipes-list>
+            <div class="grid-recipes"> 
+                <div *ngFor="let item of recipes">
+                    <div *ngIf="item.isApproved == Approved">  
+                        <app-recipes-list [recipesList]="item"></app-recipes-list>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -118,12 +120,13 @@ import { RecipesListComponent } from '../../Models/recipes/recipes-list/recipes-
     
 })
 export class HomeComponent {
-  recipesLocationList: Recipes[] = [];
+  recipes: Recipes[] = [];
   service: RecipesService = inject(RecipesService);
+  Approved = "true";
 
   constructor() {
     this.service.GetAllRecipes().subscribe((item: Recipes[] ) => {
-        this.recipesLocationList = item;
+        this.recipes = item;
     })
   }
 }
