@@ -323,7 +323,8 @@ export class RecipesEditComponent {
         modifiedDate: undefined,
         categories: this.recipeForm.value.categories as any,
         preparations: this.recipeForm.value.preparations as any,
-        isApproved: this.recipeForm.value.isApproved as string
+        isApproved: this.recipeForm.value.isApproved as string,
+        ratings: this.recipeList?.ratings
       }
       if(this.recipeList?.id == undefined) {        
       this.service.CreateRecipes(_obj).subscribe(item => {

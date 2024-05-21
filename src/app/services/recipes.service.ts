@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class RecipesService {
-  url = 'https://localhost:7103/api';
+  private readonly url = 'https://localhost:7103/api';
 
   constructor(private http: HttpClient) {} 
 
@@ -29,4 +29,8 @@ export class RecipesService {
   DeleteRecipes(id: number) {
     return this.http.delete(`${this.url}/Recipe/Delete By ${id}`);
   }
+
+  GetRecipesByCategory(data: string) {
+    return this.http.get<Recipes>(`${this.url}/Recipe/Search By Category?name= ${data}`);
+  } 
 }

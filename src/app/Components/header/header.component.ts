@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { RecipesService } from '../../services/recipes.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-header',
@@ -48,8 +50,8 @@ import { ToastrService } from 'ngx-toastr';
             <div class="col-md-3">
               <div class="search-box">  
                 <form name="search_form" method="get" class="search_form">
-                  <input id="search" type="text" placeholder="search">
-                  <input type="submit" id="search-button">
+                  <input id="search" type="text" placeholder="search" #filter>
+                  <button class="search" type="button" (click)="Home.Search(filter.value)">Search</button>
                 </form>
               </div>
             </div>
@@ -62,9 +64,13 @@ import { ToastrService } from 'ngx-toastr';
   `,
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit, DoCheck {  
+export class HeaderComponent implements OnInit, DoCheck {
+  service: RecipesService = inject(RecipesService);
+  router: Router = inject(Router);
+  toastr: ToastrService = inject(ToastrService);
+  Home: HomeComponent = inject(HomeComponent);
 
-  constructor(private router: Router, private toastr: ToastrService) { }
+  constructor() { }
 
   LoginUser = ''
   UserRole= ''

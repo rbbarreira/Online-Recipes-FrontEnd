@@ -11,6 +11,7 @@ export interface Recipes {
   ingredients: Ingredients[];
   categories: Categories[];  
   preparations: Preparations[];
+  ratings: Ratings[]
 }
 
 export enum Difficulty {

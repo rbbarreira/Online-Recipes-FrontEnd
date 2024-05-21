@@ -40,11 +40,11 @@ import { Difficulty, Recipes, Measure } from '../../interfaces/irecipes';
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">   
-          <h2 class="recipe-name">{{ recipesList.name}}</h2>                 
-          <img class="recipe-img" [src]="recipesList.photo">                   
+          <h2 class="recipe-name">{{ recipesList?.name}}</h2>                 
+          <img class="recipe-img" [src]="recipesList?.photo">                   
         </div>
         <div class="col-12">
-          <h5 class="recipe-description"> {{recipesList.description}} </h5> 
+          <h5 class="recipe-description"> {{recipesList?.description}} </h5> 
         </div> 
       </div>
     </div>       
@@ -57,10 +57,10 @@ import { Difficulty, Recipes, Measure } from '../../interfaces/irecipes';
                   <img src="/assets/category.svg" alt="category" >  {{item.name}}                                                                          
               </h6>
               <h6> Difficulty: 
-                <img src="/assets/difficulty.svg" alt="difficulty"> {{ DifficultyEnum(recipesList.difficulty) }}
+                <img src="/assets/difficulty.svg" alt="difficulty"> {{ DifficultyEnum(recipesList?.difficulty) }}
               </h6>
               <h6> Duration: 
-                <img src="/assets/duration.svg" alt="duration"> {{ recipesList.cookingTime }} min
+                <img src="/assets/duration.svg" alt="duration"> {{ recipesList?.cookingTime }} min
               </h6>                
             </div>            
           </div>
@@ -156,7 +156,7 @@ import { Difficulty, Recipes, Measure } from '../../interfaces/irecipes';
 export class DetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   service = inject(RecipesService);
-  recipesList!: Recipes;
+  recipesList?: Recipes;
 
   public DifficultyEnum(value : any) { return Difficulty[value]; }
 

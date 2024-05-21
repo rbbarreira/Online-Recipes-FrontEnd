@@ -7,7 +7,7 @@ import { AppComponent } from "../../app.component";
 @Component({
     selector: 'app-painel',
     standalone: true,
-    imports: [CommonModule, MaterialModule, RouterLink, AppComponent, RouterOutlet],
+    imports: [CommonModule, RouterLink, AppComponent, RouterOutlet, MaterialModule],
     template: `  
   
   <body>      

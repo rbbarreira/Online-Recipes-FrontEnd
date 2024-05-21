@@ -9,7 +9,7 @@ import { Categories } from '../../../interfaces/icategories';
 @Component({
   selector: 'app-categories-edit',
   standalone: true,
-  imports: [MaterialModule, ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, MaterialModule],
   template: `
 
 <body>

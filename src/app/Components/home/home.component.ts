@@ -48,7 +48,7 @@ import { RecipesListComponent } from '../../Models/recipes/recipes-list/recipes-
     <div class="container">
         <div class="row">
             <div class="grid-recipes"> 
-                <div *ngFor="let item of recipes">
+                <div *ngFor="let item of SearchRecipes">
                     <div *ngIf="item.isApproved == Approved">  
                         <app-recipes-list [recipesList]="item"></app-recipes-list>
                     </div>
@@ -123,10 +123,20 @@ export class HomeComponent {
   recipes: Recipes[] = [];
   service: RecipesService = inject(RecipesService);
   Approved = "true";
-
+  SearchRecipes: Recipes[] = [];  
+    
   constructor() {
     this.service.GetAllRecipes().subscribe((item: Recipes[] ) => {
         this.recipes = item;
+        this.SearchRecipes = item;
     })
   }
+
+  Search(text: string) {
+    if(!text) this.SearchRecipes = this.recipes; {}
+    
+    this.SearchRecipes = this.recipes.filter(search => 
+        search?.name.toLowerCase().includes(text.toLowerCase())
+    );    
+  }  
 }

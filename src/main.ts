@@ -8,6 +8,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { tokenInterceptor } from './app/interceptors/token.interceptor';
+import { HomeComponent } from './app/Components/home/home.component';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -15,6 +16,7 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(withInterceptors([tokenInterceptor])), 
     provideToastr({closeButton:true}), 
     provideAnimationsAsync(), 
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    HomeComponent
   ]
 }).catch((err) => console.error(err));
