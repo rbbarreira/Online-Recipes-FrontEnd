@@ -101,13 +101,80 @@ import { Difficulty, Recipes, Measure } from '../../interfaces/irecipes';
                 <div *ngFor="let row of item.ingredient_Quantities ">                  
                     <p><i class="fa fa-check" aria-hidden="true" style="color: #40ba37;"></i>
                       {{item.product}} <strong> : </strong> {{row.quantity}} {{MeasureEnum(row.measure)}}
-                    </p>
-                  
+                    </p>                  
                 </div>
               </div>                       
             </div>
           </div>
-        </div>        
+        </div>
+
+        <div class="heading-break-line">                           
+          <img src="/assets/div-line.png" alt="">
+        </div>
+
+         <!-- ##### Comments ##### -->
+         <div class="comments-title">
+            <div class="comment-section">
+                <h4>4 comments</h4>
+            </div>
+          </div>        
+        <div class="all-comments">
+          <div class="view-comments">
+              <div class="comments">
+                  <div class="author-thumb">
+                      <img src="../assets/author1.jpg" alt="">
+                  </div>
+                  <div class="comment-body">
+                      <h6>Rick</h6>
+                      <span class="date">11 Sep 2084 - 12:25 PM</span>
+                      <a href="#" class="hidden-xs">Reply</a>
+                      <p>Nulla ac elementum nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Donec rhoncus quam sit amet sodales finibus. Donec pellentesque non massa eu maximus. In non tellus id sem tempor gravida.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="view-comments">
+              <div class="comments">
+                  <div class="author-thumb">
+                      <img src="../assets/author2.jpg" alt="">
+                  </div>
+                  <div class="comment-body">
+                      <h6>Mai-Ling</h6>
+                      <span class="date">11 Sep 2084 - 12:25 PM</span>
+                      <a href="#" class="hidden-xs">Reply</a>
+                      <p>Nulla ac elementum nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam erat volutpat. Donec rhoncus quam sit amet sodales finibus. Donec pellentesque non massa eu maximus. In non tellus id sem tempor gravida.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="view-comments">
+              <div class="comments">
+                  <div class="author-thumb">
+                  <img src="../assets/author3.jpg" alt="">
+                  </div>
+                  <div class="comment-body">
+                      <h6>George</h6>
+                      <span class="date">12 Sep 2084 - 10:40 AM</span>
+                      <a href="#" class="hidden-xs">Reply</a>
+                      <p>Duis rutrum, libero eu blandit gravida, massa orci cursus nisi, vehicula facilisis purus neque dignissim urna. Etiam molestie elementum elit at tempus. Suspendisse quis consectetur nisi, vitae consequat sem. In et quam id libero venenatis venenatis. Morbi vitae justo vulputate, auctor augue eu, pulvinar augue.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="view-comments">
+              <div class="comments">
+                  <div class="author-thumb">
+                  <img src="../assets/author4.jpg" alt="">
+                  </div>
+                  <div class="comment-body">
+                      <h6>Jane</h6>
+                      <span class="date">14 Sep 2084 - 05:16 PM</span>
+                      <a href="#" class="hidden-xs">Reply</a>
+                      <p>Suspendisse vitae maximus nisl, non finibus ante. Suspendisse neque nisl, luctus ullamcorper erat a, fermentum mollis nibh. Aliquam vulputate augue vel metus suscipit euismod. Quisque id purus massa. Sed condimentum facilisis eros, ultrices tincidunt libero facilisis eget. Integer eget cursus velit.</p>
+                  </div>
+              </div>
+          </div>
+          </div>
+          <div class="divide-line">
+          <img src="images/div-line.png" alt="" />
+          </div>
 
         <!-- ##### Comments ##### -->
         <div class="row">

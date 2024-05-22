@@ -226,6 +226,105 @@ img {
 	color: #000;
 }
 
+/*-- Single Post --*/
+
+.image-post {
+	overflow: hidden;
+  }
+  
+  .product-title h3 {
+	font-size: 16px;
+	font-weight: 700;
+	color: #333;
+	display: inline-block;
+	margin-right: 20px;
+	border-right: 1px solid #ddd;
+	padding-right: 20px;
+  }
+  
+  .product-title span {
+	display: inline-block;
+	font-size: 13px;
+	color: #f78e21;
+  } 
+  
+  .product-content a {
+	font-weight: 700;
+	font-size: 13px;
+  }
+  
+  .product-content p {
+	margin-top: 5px;
+	padding-bottom: 15px;
+  }
+  
+  .comment-section h4 {
+	margin-top: 30px;
+	font-size: 16px;
+	color: #666;
+	font-weight: 700;
+	text-transform: uppercase;
+  }
+  
+  .all-comments {
+	margin-top: 40px;
+	margin-bottom: 40px;
+  }
+  
+  .comments {
+	margin-top: 30px;
+  }
+  
+  .author-thumb {
+	float: left;
+	margin-right: 30px;
+	max-width: 8%;
+  }
+  
+  .comment-body {
+	background-color: #f3f3f3;
+	padding: 20px;
+	overflow: hidden;
+	position: relative;
+  }
+  
+  .comment-body h6 {
+	font-size: 16px;
+	font-weight: 700;
+	color: #333;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+	margin-top: 0px;
+  }
+  
+  .comment-body span {
+	font-size: 14px;
+	color: #f78e21;
+  }
+  
+  .comment-body p {
+	margin-top: 20px;
+  }
+  
+  .comment-body a {
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #fff;
+	background-color: #f78e21;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+  }
+  
+  .replyed-form {
+	margin-left: 130px;
+  }
+
   
 /*--- RESPONSIVE ---*/
 
